@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "init": "^0.1.2"
+  },
+  "devDependencies": {
+    "eslint-config-trybe-fundamentals": "^1.1.1",
+    "git-commit-msg-linter": "^4.1.1"
+  }
+}
