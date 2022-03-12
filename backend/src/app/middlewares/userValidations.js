@@ -6,12 +6,18 @@ const validateEmail = (email) => {
   return verifyEmail ? true : false;
 };
 
+const validatePassword = (password) => {
+  const PASSWORD_LENGTH = 6;
+
+  return password.length >= PASSWORD_LENGTH ? true : false;
+};
+
 const loginDataValidation = (req, res, next) => {
-  const fields = ['email', 'password'];
+  const loginFields = ['email', 'password'];
 
   const { body } = req;
 
-  for (let field of fields) {
+  for (let field of loginFields) {
     if (!body[field]) {
       return res.status(400).json({ message: 'All fields are required.'});
     }
@@ -24,10 +30,29 @@ const loginDataValidation = (req, res, next) => {
   next();
 };
 
-// const registerDataValidation = (req, res, next) => {
-//   const fields
-// }
+const registerDataValidation = (req, res, next) => {
+  const registerFields = ['name', 'email', 'password'];
+
+  const { body } = req;
+
+  for (let field of registerFields) {
+    if (!body[field]) {
+      return res.status(400).json({ message: 'All fields are required' });
+    }
+  }
+
+  if (!validateEmail(body.email)) {
+    return res.status(400).json({ message: 'Invalid email address'});
+  }
+
+  if (!validatePassword(body.password)) {
+    return res.status(400).json({ message: 'Password must be at least 6 characters' });
+  }
+
+  next();
+};
 
 module.exports = {
   loginDataValidation,
+  registerDataValidation,
 };
