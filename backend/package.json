@@ -1,4 +1,10 @@
 {
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "scripts": {
+    "dev": "nodemon src/app"
+  },
   "dependencies": {
     "@prisma/client": "^3.10.0",
     "express": "^4.17.3",
