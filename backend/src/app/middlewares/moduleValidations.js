@@ -14,9 +14,15 @@ const tokenValidation = (req, res, next) => {
   }
 
   next();
+};
 
+const nameValidation = (req, res, next) => {
+  return req.body.name 
+    ? next()
+    : res.status(400).json({message: 'Name is required.'});
 };
 
 module.exports = {
-  tokenValidation
+  tokenValidation,
+  nameValidation
 };

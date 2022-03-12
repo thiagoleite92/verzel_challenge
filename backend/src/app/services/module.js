@@ -23,7 +23,7 @@ const editModule = async (id, name) => {
     return { status: 409, message: edited.message };
   }
 
-  return { status: 203, edited };
+  return { status: 202, edited };
 };
 
 module.exports = {
