@@ -31,7 +31,23 @@ const newModule = async (req, res) => {
   }
 };
 
+const editModule = async (req, res) => {
+  try {
+    const { name } = req.body;
+    const { id } = req.params;
+    const intID = parseInt(id, 10);
+    const response = await moduleService.editModule(intID, name);
+
+    return response.message
+      ? res.status(response.status).json(response.message)
+      : res.status(response.status).json(response.edited);
+  } catch(e) {
+    return res.status(serverError.status).json(serverError.message);
+  }
+};
+
 module.exports = {
   listModules,
   newModule,
+  editModule,
 };

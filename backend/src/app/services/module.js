@@ -16,7 +16,18 @@ const newModule = async (name) => {
   return { status: 201, module };
 };
 
+const editModule = async (id, name) => {
+  const edited = await moduleModel.editModule(id, name);
+
+  if (edited.message) {
+    return { status: 409, message: edited.message };
+  }
+
+  return { status: 203, edited };
+};
+
 module.exports = {
   listModules,
-  newModule
+  newModule,
+  editModule
 };

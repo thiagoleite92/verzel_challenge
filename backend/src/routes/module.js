@@ -7,6 +7,7 @@ router.get('/', moduleController.listModules);
 
 router.use(tokenValidation);
 
-router.post('/newmodule', moduleController.newModule);
+router.post('/new', moduleController.newModule);
+router.put('/edit/:id', moduleController.editModule);
 
 module.exports = router;
