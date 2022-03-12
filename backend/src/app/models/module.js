@@ -7,6 +7,13 @@ const listModules = async () => {
   return modules;
 };
 
+const listModuleById =  async (id) => {
+  const module = await prisma.module.findUnique({
+    where: { id }
+  });
+  return module;
+};
+
 const newModule = async (name) => {
   try {
     const module = await prisma.module.create({
@@ -47,6 +54,7 @@ const deleteModule = async (id) => {
 
 module.exports = {
   listModules,
+  listModuleById,
   newModule,
   editModule,
   deleteModule

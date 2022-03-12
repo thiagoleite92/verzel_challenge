@@ -14,6 +14,22 @@ const listModules = async (req, res) => {
   }
 };
 
+const listModuleById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const intID = parseInt(id, 10);
+    const response = await moduleService.listModuleById(intID);
+
+    if (response.message) {
+      return res.status(response.status).json(response.message);
+    }
+    return res.status(response.status).json(response.module);
+
+  } catch(e) {
+    return res.status(serverError.status).json(serverError.message);
+  }
+};
+
 const newModule = async (req, res) => {
   try {
     const { name } = req.body;
@@ -64,6 +80,7 @@ const deleteModule = async (req, res) => {
 
 module.exports = {
   listModules,
+  listModuleById,
   newModule,
   editModule,
   deleteModule,

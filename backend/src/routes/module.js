@@ -4,6 +4,7 @@ const moduleController = require('../app/controllers/module');
 const { tokenValidation, nameValidation } = require('../app/middlewares/moduleValidations');
 
 router.get('/', moduleController.listModules);
+router.get('/:id', moduleController.listModuleById);
 
 router.use(tokenValidation);
 

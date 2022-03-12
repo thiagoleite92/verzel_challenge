@@ -6,6 +6,16 @@ const listModules = async () => {
   return modules;
 };
 
+const listModuleById = async (id) => {
+  const module = await moduleModel.listModuleById(id);
+
+  if (!module) {
+    return { status: 404, message: 'Module not found.' };
+  }
+
+  return { status: 200, module };
+};
+
 const newModule = async (name) => {
   const module = await moduleModel.newModule(name);
 
@@ -38,6 +48,7 @@ const deleteModule = async (id) => {
 
 module.exports = {
   listModules,
+  listModuleById,
   newModule,
   editModule,
   deleteModule,
