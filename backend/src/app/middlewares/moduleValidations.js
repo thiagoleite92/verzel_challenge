@@ -10,7 +10,7 @@ const tokenValidation = (req, res, next) => {
   const token = isAdmin(authorization);
 
   if (token.message) {
-    return res.status(400).json({message: token.message});
+    return res.status(401).json({message: token.message});
   }
 
   next();

@@ -18,7 +18,7 @@ const isAdmin = (token) => {
   try {
     const decode = jwt.decode(token, secret, jwtConfig);
     if (decode.role !== 'admin') {
-      return { message: ' You do not have permission to create new modules'};
+      return { message: ' You do not have permission to do this.' };
     } 
     return 'admin';
   } catch(e) {
