@@ -14,6 +14,8 @@
     "eslint-config-trybe-fundamentals": "^1.1.1",
     "git-commit-msg-linter": "^4.1.1",
     "nodemon": "^2.0.15",
-    "prisma": "^3.10.0"
+    "prisma": "^3.10.0",
+    "cors": "^2.8.5",
+    "jsonwebtoken": "^8.5.1"
   }
 }
