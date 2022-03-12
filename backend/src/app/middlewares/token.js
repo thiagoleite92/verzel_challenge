@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
-require('dotenv').config()
+require('dotenv').config();
 
-const secret = process.env.SECRET || 'secret'
+const secret = process.env.SECRET || 'secret';
 
 
 const jwtConfig = {
@@ -14,6 +14,19 @@ const createToken = (data) => {
   return token;
 };
 
+const isAdmin = (token) => {
+  try {
+    const decode = jwt.decode(token, secret, jwtConfig);
+    if (decode.role !== 'admin') {
+      return { message: ' You do not have permission to create new modules'};
+    } 
+    return 'admin';
+  } catch(e) {
+    return { message: 'Token not valid'};
+  }
+};
+
 module.exports = {
-  createToken
-}
+  createToken,
+  isAdmin
+};
