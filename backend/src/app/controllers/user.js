@@ -1,10 +1,10 @@
 const userService = require('../services/user');
 
-const postLogin = async (req, res) => {
+const userLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const response = await userService.postLogin(email, password);
+    const response = await userService.userLogin(email, password);
 
     if (response.message) {
       return res.status(response.status).json({ message: response.message });
@@ -18,5 +18,5 @@ const postLogin = async (req, res) => {
 };
 
 module.exports = {
-  postLogin,
+  userLogin,
 };

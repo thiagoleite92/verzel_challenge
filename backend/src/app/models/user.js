@@ -17,7 +17,7 @@ const findUser = async (email, password) => {
   return user;
 };
 
-const postLogin = async (email, password) => {
+const userLogin = async (email, password) => {
   const userFound = await findUser(email, password);
 
   if (userFound.message) {
@@ -34,5 +34,5 @@ const postLogin = async (email, password) => {
 };
 
 module.exports = {
-  postLogin,
+  userLogin,
 };

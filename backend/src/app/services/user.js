@@ -1,7 +1,7 @@
 const userModel = require('../models/user');
 
-const postLogin = async (email, password) => {
-  const user = await userModel.postLogin(email, password);
+const userLogin = async (email, password) => {
+  const user = await userModel.userLogin(email, password);
 
   if (user.message) {
     return { status: 400, message: user.message };
@@ -11,5 +11,5 @@ const postLogin = async (email, password) => {
 };
 
 module.exports = {
-  postLogin,
+  userLogin,
 };
