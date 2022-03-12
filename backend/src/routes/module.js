@@ -7,7 +7,10 @@ router.get('/', moduleController.listModules);
 
 router.use(tokenValidation);
 
+router.delete('/delete/:id', moduleController.deleteModule);
+
 router.use(nameValidation);
+
 router.post('/new', moduleController.newModule);
 router.put('/edit/:id', moduleController.editModule);
 

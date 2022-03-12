@@ -33,8 +33,21 @@ const editModule = async (id, name) => {
   }
 };
 
+const deleteModule = async (id) => {
+  try {
+    const deleted = await prisma.module.delete({
+      where: { id }
+    });
+
+    return deleted;
+  } catch(e) {
+    return { message: 'There is no module with this name.' };
+  }
+};
+
 module.exports = {
   listModules,
   newModule,
-  editModule
+  editModule,
+  deleteModule
 };

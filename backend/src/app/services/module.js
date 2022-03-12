@@ -26,8 +26,19 @@ const editModule = async (id, name) => {
   return { status: 202, edited };
 };
 
+const deleteModule = async (id) => {
+  const deleted = await moduleModel.deleteModule(id);
+
+  if (deleted.message) {
+    return { status: 404, message: deleted.message };
+  }
+
+  return { status: 202, deleted };
+};
+
 module.exports = {
   listModules,
   newModule,
-  editModule
+  editModule,
+  deleteModule,
 };

@@ -46,8 +46,25 @@ const editModule = async (req, res) => {
   }
 };
 
+const deleteModule = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const intID = parseInt(id, 10);
+
+    const response = await moduleService.deleteModule(intID);
+
+    return response.message
+      ? res.status(response.status).json(response.message)
+      : res.status(response.status).json(response.deleted);
+
+  } catch(e) {
+    return res.status(serverError.status).json(serverError.message);
+  }
+};
+
 module.exports = {
   listModules,
   newModule,
   editModule,
+  deleteModule,
 };
