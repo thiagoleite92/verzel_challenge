@@ -18,6 +18,11 @@ model User {
   password String
 }
 
+model Module {
+  id Int @id @default(autoincrement())
+  name String @unique
+}
+
 enum Role {
   user
   admin

@@ -9,6 +9,13 @@ async function main() {
       { email: 'admin@email.com', name: 'Mr.Dowell', password: 'admin123', role: 'admin' }
     ]
   });
+
+  await prisma.module.createMany({
+    data: [
+      { name: 'Fundamentos Web - HTML & CSS'},
+      { name: 'JavaScript para iniciantes'}
+    ]
+  });
 }
 
 
