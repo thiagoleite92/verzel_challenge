@@ -4,14 +4,15 @@ const postLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const user = await userService.postLogin(email, password);
+    const response = await userService.postLogin(email, password);
 
-    if (user.message) {
-      return res.status(user.status).json({ message: user.message });
+    if (response.message) {
+      return res.status(response.status).json({ message: response.message });
     }
 
-    return res.status(200).json({ user });
+    return res.status(response.status).json(response.user);
   } catch (e) {
+
     return res.status(500).json({ message: 'Something went wrong' });
   }
 };
