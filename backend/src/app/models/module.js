@@ -3,7 +3,6 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const listModules = async () => {
-  console.log('oi');
 
   const modules = await prisma.module.findMany();
 
@@ -12,6 +11,22 @@ const listModules = async () => {
   return modules;
 };
 
+const newModule = async (name) => {
+  try
+  {
+    const module = await prisma.module.create({
+      data: {
+        name
+      }
+    });
+
+    return module;
+  } catch(e) {
+    return { message: 'There is a module with this name.' };
+  }
+};
+
 module.exports = {
-  listModules
+  listModules,
+  newModule
 };
