@@ -17,6 +17,23 @@ const userLogin = async (req, res) => {
   }
 };
 
+const userRegister = async (req, res) => {
+  try {
+    const { body } = req;
+
+    const response = await userService.userRegister(body);
+
+    if (response.message) {
+      return res.status(response.status).json({message: response.message});
+    }
+
+    return res.status(response.status).json(response.register);
+  } catch(e) {
+    return res.status(500).json({message: 'Something went wrong'});
+  }
+};
+
 module.exports = {
   userLogin,
+  userRegister
 };

@@ -33,6 +33,26 @@ const userLogin = async (email, password) => {
   return { name, role, token };
 };
 
+const userRegister = async (name, email, password) => {
+  try {
+    const { role } = await prisma.user.create({
+      data: {
+        email, password, name
+      }
+    });
+
+    const dataToken = { name, role, email };
+
+    const token = createToken(dataToken);
+
+    return { name, role, token };
+  } catch (e) {
+    return { message: 'Email already registered.'};
+  }
+
+};
+
 module.exports = {
   userLogin,
+  userRegister,
 };
