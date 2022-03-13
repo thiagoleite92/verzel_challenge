@@ -1,9 +1,7 @@
 const validateEmail = (email) => {
   const validEmail = /^[a-z0-9._]+@[a-z0-9]+\.[a-z]+(\.([a-z]+))?$/i;
 
-  const verifyEmail = validEmail.test(email);
-
-  return verifyEmail ? true : false;
+  return validEmail.test(email) ? true : false;
 };
 
 const validatePassword = (password) => {
@@ -19,7 +17,7 @@ const loginDataValidation = (req, res, next) => {
 
   for (let field of loginFields) {
     if (!body[field]) {
-      return res.status(400).json({ message: `${field}is Required` });
+      return res.status(400).json({ message: `${field} is Required` });
     }
   }
 
@@ -37,7 +35,7 @@ const registerDataValidation = (req, res, next) => {
 
   for (let field of registerFields) {
     if (!body[field]) {
-      return res.status(400).json({ message: `${field}is Required` });
+      return res.status(400).json({ message: `${field} is Required` });
     }
   }
 

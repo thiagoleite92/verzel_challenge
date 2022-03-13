@@ -1,4 +1,16 @@
-const lectureModel = require('../models/module');
+const lectureModel = require('../models/lecture');
+
+const validateLecture = (lecture) => {
+  const LECTURE_LENGTH = 12;
+
+  return lecture.length >= LECTURE_LENGTH ? true : false;
+};
+
+const validateDateFormat = (startDate) => {
+  const validDate = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/gm;
+
+  return validDate.teste(startDate) ? true : false;
+};
 
 const lectureValidation = (req, res, next) => {
   const loginFields = ['lecture', 'startDate'];
@@ -9,6 +21,18 @@ const lectureValidation = (req, res, next) => {
     if (!body[field]) {
       return res.status(400).json({ message: `${field}is Required` });
     }
+  }
+
+  if (!validateLecture) {
+    return res.status(400).json({ 
+      message: 'Lecture name must have at least 12 characters'
+    });
+  }
+
+  if (!validateDateFormat) {
+    return res.status(400).json({ 
+      message: 'Start date must have format YYYY-MM-DD'
+    });
   }
 
   next();
