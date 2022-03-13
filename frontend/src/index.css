@@ -4,3 +4,7 @@
   box-sizing: border-box;
   font-family: 'Roboto Mono', monospace, 'Sans Serif', monospace;
 }
+
+body {
+  background-color: #36454F;
+}
