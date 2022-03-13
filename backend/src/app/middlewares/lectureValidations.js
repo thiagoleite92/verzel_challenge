@@ -4,8 +4,6 @@ const moduleModel = require('../models/module');
 const validateLecture = (lecture) => {
   const LECTURE_LENGTH = 12;
 
-  console.log(lecture.length);
-
   return lecture.length >= LECTURE_LENGTH;
 };
 
@@ -43,7 +41,6 @@ const lectureValidation = (req, res, next) => {
 
 const verifyModuleByIdOnLecture = async (req, res, next) => {
   const { moduleId } = req.body;
-  console.log(moduleId, 'body')
   const intID = parseInt(moduleId, 10);
   
   const module = await moduleModel.listModuleById(intID);
@@ -57,7 +54,7 @@ const verifyLectureById = async (req, res, next) => {
   const { id } = req.params;
   const intID = parseInt(id, 10);
   
-  const module = await lectureModel.listModuleById(intID);
+  const module = await lectureModel.listLectures(intID);
 
   return module
     ? next()

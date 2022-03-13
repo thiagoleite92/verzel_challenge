@@ -6,11 +6,10 @@ const userLogin = async (req, res) => {
 
     const response = await userService.userLogin(email, password);
 
-    if (response.message) {
-      return res.status(response.status).json({ message: response.message });
-    }
-
-    return res.status(response.status).json(response.user);
+    return response.message 
+      ? res.status(response.status).json(response.message)
+      : res.status(response.status).json(response.lectures);
+      
   } catch (e) {
 
     return res.status(500).json({ message: 'Something went wrong' });
@@ -23,11 +22,10 @@ const userRegister = async (req, res) => {
 
     const response = await userService.userRegister(body);
 
-    if (response.message) {
-      return res.status(response.status).json({message: response.message});
-    }
+    return response.message 
+      ? res.status(response.status).json(response.message)
+      : res.status(response.status).json(response.lectures);
 
-    return res.status(response.status).json(response.register);
   } catch(e) {
     return res.status(500).json({message: 'Something went wrong'});
   }

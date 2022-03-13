@@ -20,10 +20,9 @@ const listModuleById = async (req, res) => {
     const intID = parseInt(id, 10);
     const response = await moduleService.listModuleById(intID);
 
-    if (response.message) {
-      return res.status(response.status).json(response.message);
-    }
-    return res.status(response.status).json(response.module);
+    return response.message 
+      ? res.status(response.status).json(response.message)
+      : res.status(response.status).json(response.module);
 
   } catch(e) {
     return res.status(serverError.status).json(serverError.message);
@@ -36,11 +35,9 @@ const newModule = async (req, res) => {
 
     const response = await moduleService.newModule(module);
 
-    if (response.message) {
-      return res.status(response.status).json(response.message);
-    }
-
-    return res.status(response.status).json(response.module);
+    return response.message 
+      ? res.status(response.status).json(response.message)
+      : res.status(response.status).json(response.module);
 
   } catch(e) {
     return res.status(serverError.status).json(serverError.message);
@@ -57,6 +54,7 @@ const editModule = async (req, res) => {
     return response.message
       ? res.status(response.status).json(response.message)
       : res.status(response.status).json(response.edited);
+
   } catch(e) {
     return res.status(serverError.status).json(serverError.message);
   }

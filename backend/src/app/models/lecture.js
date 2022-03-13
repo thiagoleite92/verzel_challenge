@@ -7,9 +7,9 @@ const listLectures = async (id) => {
     where: { id },
   });
 
-  if (lectures.length === 0) {
-    return { message: 'Lectures not found.' };
-  }
+  // if (lectures.length === 0) {
+  //   return { message: 'Lectures not found.' };
+  // }
 
   return lectures;
 };

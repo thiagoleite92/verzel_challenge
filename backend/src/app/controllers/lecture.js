@@ -11,12 +11,10 @@ const listLectures = async (req, res) => {
     const intID = parseInt(id, 10);
     const response = await lectureService.listLectures(intID);
 
-    if (response.message) {
-      return res.status(response.status).json(response.message);
-    }
-
-    return res.status(response.status).json(response.lectures);
-
+    return response.message 
+      ? res.status(response.status).json(response.message)
+      : res.status(response.status).json(response.lectures);
+      
   } catch (e) {
     return res.status(serverError.status).json(serverError.message);
   }
@@ -28,11 +26,9 @@ const newLecture = async (req, res) => {
 
     const response = await lectureService.newLecture(body);
 
-    if (response.message) {
-      return res.status(response.status).json(response.message);
-    }
-
-    return res.status(response.status).json(response.newestLecture);
+    return response.message 
+      ? res.status(response.status).json(response.message)
+      : res.status(response.status).json(response.newestLecture);
 
   } catch(e) {
     return res.status(serverError.status).json(serverError.message);
@@ -45,14 +41,13 @@ const editLecture = async (req, res) => {
     const { id } =  req.params;
 
     const intID = parseInt(id, 10);
-    
+
     const response = await lectureService.editLecture(intID, {lecture, startDate});
 
-    if (response.message) {
-      return res.status(response.status).json({message: response.message});
-    }
+    return response.message 
+      ? res.status(response.status).json(response.message)
+      : res.status(response.status).json(response.editedLecture);
 
-    return res.status(202).json(response.editedLecture);
   } catch(e) {
     return res.status(serverError.status).json(serverError.message);
   }
@@ -65,11 +60,9 @@ const deleteLecture = async (req, res) => {
 
     const response = await lectureService.deleteLecture(intID);
 
-    if (response.message) {
-      return res.status(response.status).json({message: response.message});
-
-    }
-    return res.status(202).json(response.deleted);
+    return response.message 
+      ? res.status(response.status).json(response.message)
+      : res.status(response.status).json(response.deleted);
 
   } catch(e) {
     return res.status(serverError.status).json(serverError.message);
