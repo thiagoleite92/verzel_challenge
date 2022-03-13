@@ -14,6 +14,23 @@ const listLectures = async (id) => {
   return lectures;
 };
 
+const editLecture = async (id, lecture, startDate) => {
+  try {
+    const edited = await prisma.lecture.update({
+      where: { id },
+      data: {
+        startDate: new Date(startDate),
+        lecture
+      }
+    });
+    
+    return edited;
+  } catch(e) {
+    return { message: 'Lecture not found' };
+  }
+};
+
 module.exports = {
-  listLectures
+  listLectures,
+  editLecture
 };

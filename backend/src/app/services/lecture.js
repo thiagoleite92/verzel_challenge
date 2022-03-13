@@ -10,6 +10,17 @@ const listLectures = async (id) => {
   return { status: 200, lectures };
 };
 
+const editLecture = async (id, {lecture, startDate}) => {
+  const editedLecture = await lectureModel.editLecture(id, lecture, startDate);
+
+  if (editedLecture.message) {
+    return { status: 404, message: editedLecture.message };
+  }
+
+  return { status: 202, editedLecture };
+};
+
 module.exports = {
-  listLectures
+  listLectures,
+  editLecture
 };
