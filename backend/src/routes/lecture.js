@@ -8,6 +8,8 @@ router.get('/module/:id', lectureController.listLectures);
 router.use(tokenValidation);
 
 router.delete('/delete/:id', lectureController.deleteLecture);
+
+router.post('/new',lectureController.newLecture);
 router.put('/edit/:id', lectureController.editLecture);
 
 module.exports = router;

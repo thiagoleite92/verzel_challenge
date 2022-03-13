@@ -14,6 +14,22 @@ const listLectures = async (id) => {
   return lectures;
 };
 
+const newLecture = async (lecture, startDate, moduleId) => {
+  try {
+    const newestLecture = await prisma.lecture.create({
+      data: {
+        lecture,
+        startDate: new Date(startDate),
+        moduleId
+      }
+    });
+
+    return newestLecture;
+  } catch(e) {
+    return { message: 'Already There is a lecture with this name.' };
+  }
+};
+
 const editLecture = async (id, lecture, startDate) => {
   try {
     const edited = await prisma.lecture.update({
@@ -45,5 +61,6 @@ const deleteLecture = async (id) => {
 module.exports = {
   listLectures,
   editLecture,
-  deleteLecture
+  deleteLecture,
+  newLecture
 };

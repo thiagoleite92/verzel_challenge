@@ -22,6 +22,23 @@ const listLectures = async (req, res) => {
   }
 };
 
+const newLecture = async (req, res) => {
+  try {
+    const { body } = req;
+
+    const response = await lectureService.newLecture(body);
+
+    if (response.message) {
+      return res.status(response.status).json(response.message);
+    }
+
+    return res.status(response.status).json(response.newestLecture);
+
+  } catch(e) {
+    return res.status(serverError.status).json(serverError.message);
+  }
+};
+
 const editLecture = async (req, res) => {
   try {
     const { lecture, startDate } = req.body;
@@ -61,6 +78,7 @@ const deleteLecture = async (req, res) => {
 
 module.exports = {
   listLectures,
+  newLecture,
   editLecture,
   deleteLecture
 };

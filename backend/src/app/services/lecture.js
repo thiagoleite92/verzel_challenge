@@ -10,6 +10,16 @@ const listLectures = async (id) => {
   return { status: 200, lectures };
 };
 
+const newLecture = async ({lecture, startDate, moduleId}) => {
+  const newestLecture = await lectureModel.newLecture(lecture, startDate, moduleId);
+
+  if (newestLecture.message) {
+    return { status: 409, message: newestLecture.message };
+  }
+
+  return { status: 201, newestLecture };
+};
+
 const editLecture = async (id, {lecture, startDate}) => {
   const editedLecture = await lectureModel.editLecture(id, lecture, startDate);
 
@@ -32,6 +42,7 @@ const deleteLecture = async (id) => {
 
 module.exports = {
   listLectures,
+  newLecture,
   editLecture,
   deleteLecture
 };
