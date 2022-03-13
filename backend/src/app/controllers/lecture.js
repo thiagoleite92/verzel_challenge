@@ -34,8 +34,26 @@ const editLecture = async (req, res) => {
     if (response.message) {
       return res.status(response.status).json({message: response.message});
     }
-    
+
     return res.status(202).json(response.editedLecture);
+  } catch(e) {
+    return res.status(serverError.status).json(serverError.message);
+  }
+};
+
+const deleteLecture = async (req, res) => {
+  try {
+    const { id } =  req.params;
+    const intID = parseInt(id, 10);
+
+    const response = await lectureService.deleteLecture(intID);
+
+    if (response.message) {
+      return res.status(response.status).json({message: response.message});
+
+    }
+    return res.status(202).json(response.deleted);
+
   } catch(e) {
     return res.status(serverError.status).json(serverError.message);
   }
@@ -43,5 +61,6 @@ const editLecture = async (req, res) => {
 
 module.exports = {
   listLectures,
-  editLecture
+  editLecture,
+  deleteLecture
 };

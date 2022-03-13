@@ -27,7 +27,7 @@ model Module {
 
 model Lecture {
   id       Int    @id @default(autoincrement())
-  lecture  String
+  lecture  String @unique
   module Module @relation(fields: [moduleId], references: [id])
   moduleId Int @map("module_id")
   startDate DateTime @map("start_date") @db.Date

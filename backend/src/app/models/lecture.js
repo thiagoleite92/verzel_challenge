@@ -26,11 +26,24 @@ const editLecture = async (id, lecture, startDate) => {
     
     return edited;
   } catch(e) {
-    return { message: 'Lecture not found' };
+    return { message: 'Already there is a lecture with this name.' };
+  }
+};
+
+const deleteLecture = async (id) => {
+  try {
+    const deleted = await prisma.lecture.delete({
+      where: { id}
+    });
+
+    return deleted;
+  } catch(e) {
+    return { message: 'Lecture not found.' };
   }
 };
 
 module.exports = {
   listLectures,
-  editLecture
+  editLecture,
+  deleteLecture
 };

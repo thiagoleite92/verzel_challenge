@@ -20,7 +20,18 @@ const editLecture = async (id, {lecture, startDate}) => {
   return { status: 202, editedLecture };
 };
 
+const deleteLecture = async (id) => {
+  const deleted = await lectureModel.deleteLecture(id);
+
+  if (deleted.message) {
+    return { status: 404, message: deleted.message };
+  }
+
+  return { status: 202, deleted };
+};
+
 module.exports = {
   listLectures,
-  editLecture
+  editLecture,
+  deleteLecture
 };

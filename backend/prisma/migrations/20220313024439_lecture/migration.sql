@@ -5,6 +5,7 @@ CREATE TABLE `Lecture` (
     `module_id` INTEGER NOT NULL,
     `start_date` DATE NOT NULL,
 
+    UNIQUE INDEX `Lecture_lecture_key`(`lecture`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
