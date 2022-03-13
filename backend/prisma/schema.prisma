@@ -3,6 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  engineType = "InnoDB"
 }
 
 datasource db {
@@ -11,18 +12,26 @@ datasource db {
 }
 
 model User {
-  id Int @id @default(autoincrement())
-  name String
-  email String @unique
-  role Role @default(user)
+  id       Int    @id @default(autoincrement())
+  name     String
+  email    String @unique
+  role     Role   @default(user)
   password String
 }
 
 model Module {
-  id Int @id @default(autoincrement())
-  module String @unique
+  id      Int       @id @default(autoincrement())
+  module  String    @unique
+  Lecture Lecture[]
 }
 
+model Lecture {
+  id       Int    @id @default(autoincrement())
+  lecture  String
+  module Module @relation(fields: [moduleId], references: [id])
+  moduleId Int @map("module_id")
+  startDate DateTime @map("start_date") @db.Date
+}
 
 enum Role {
   user

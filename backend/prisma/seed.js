@@ -16,6 +16,15 @@ async function main() {
       { module: 'JavaScript para iniciantes'}
     ]
   });
+
+  await prisma.lecture.createMany({
+    data: [
+      { lecture: 'HTML 1', moduleId: 1, startDate: new Date('2022-03-14')},
+      { lecture: 'CSS 1', moduleId: 1, startDate: new Date('2022-03-15')},
+      { lecture: 'Constantes e Variáveis', moduleId: 2, startDate: new Date('2022-03-21')},
+      { lecture: 'Loops e Ifs', moduleId: 2, startDate: new Date('2022-03-22')},
+    ]
+  });
 }
 
 
