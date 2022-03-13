@@ -1,7 +1,8 @@
 const router = require('express').Router();
 
 const moduleController = require('../app/controllers/module');
-const { tokenValidation, moduleValidation } = require('../app/middlewares/moduleValidations');
+const { tokenValidation } = require('../app/middlewares/token');
+const { moduleValidation } = require('../app/middlewares/moduleValidations');
 
 router.get('/', moduleController.listModules);
 router.get('/:id', moduleController.listModuleById);
