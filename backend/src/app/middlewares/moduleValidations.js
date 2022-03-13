@@ -16,13 +16,13 @@ const tokenValidation = (req, res, next) => {
   next();
 };
 
-const nameValidation = (req, res, next) => {
-  return req.body.name 
+const moduleValidation = (req, res, next) => {
+  return req.body.module 
     ? next()
-    : res.status(400).json({message: 'Name is required.'});
+    : res.status(400).json({message: 'Module is required.'});
 };
 
 module.exports = {
   tokenValidation,
-  nameValidation
+  moduleValidation
 };

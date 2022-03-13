@@ -12,8 +12,8 @@ async function main() {
 
   await prisma.module.createMany({
     data: [
-      { name: 'Fundamentos Web - HTML & CSS'},
-      { name: 'JavaScript para iniciantes'}
+      { module: 'Fundamentos Web - HTML & CSS'},
+      { module: 'JavaScript para iniciantes'}
     ]
   });
 }

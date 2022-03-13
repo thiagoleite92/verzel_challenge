@@ -32,9 +32,9 @@ const listModuleById = async (req, res) => {
 
 const newModule = async (req, res) => {
   try {
-    const { name } = req.body;
+    const { module } = req.body;
 
-    const response = await moduleService.newModule(name);
+    const response = await moduleService.newModule(module);
 
     if (response.message) {
       return res.status(response.status).json(response.message);
@@ -49,10 +49,10 @@ const newModule = async (req, res) => {
 
 const editModule = async (req, res) => {
   try {
-    const { name } = req.body;
+    const { module } = req.body;
     const { id } = req.params;
     const intID = parseInt(id, 10);
-    const response = await moduleService.editModule(intID, name);
+    const response = await moduleService.editModule(intID, module);
 
     return response.message
       ? res.status(response.status).json(response.message)

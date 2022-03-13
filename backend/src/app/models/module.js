@@ -14,25 +14,25 @@ const listModuleById =  async (id) => {
   return module;
 };
 
-const newModule = async (name) => {
+const newModule = async (module) => {
   try {
-    const module = await prisma.module.create({
+    const newestModule = await prisma.module.create({
       data: {
-        name
+        module
       }
     });
 
-    return module;
+    return newestModule;
   } catch(e) {
     return { message: 'There is a module with this name.' };
   }
 };
 
-const editModule = async (id, name) => {
+const editModule = async (id, module) => {
   try {
     const edited = await prisma.module.update({
       where: { id },
-      data: { name }
+      data: { module }
     });
     return edited;
   } catch(e) {
@@ -48,7 +48,7 @@ const deleteModule = async (id) => {
 
     return deleted;
   } catch(e) {
-    return { message: 'There is no module with this name.' };
+    return { message: 'Module not found.' };
   }
 };
 

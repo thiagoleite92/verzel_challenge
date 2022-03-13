@@ -16,18 +16,18 @@ const listModuleById = async (id) => {
   return { status: 200, module };
 };
 
-const newModule = async (name) => {
-  const module = await moduleModel.newModule(name);
+const newModule = async (module) => {
+  const newestModule = await moduleModel.newModule(module);
 
-  if (module.message) {
-    return { status: 409, message: module.message };
+  if (newestModule.message) {
+    return { status: 409, message: newestModule.message };
   }
 
   return { status: 201, module };
 };
 
-const editModule = async (id, name) => {
-  const edited = await moduleModel.editModule(id, name);
+const editModule = async (id, module) => {
+  const edited = await moduleModel.editModule(id, module);
 
   if (edited.message) {
     return { status: 409, message: edited.message };
