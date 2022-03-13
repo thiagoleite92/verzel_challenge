@@ -3,8 +3,8 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const listLectures = async (id) => {
-  const lectures = await prisma.lecture.findMany({
-    where: { moduleId: id },
+  const lectures = await prisma.lecture.findUnique({
+    where: { id },
   });
 
   if (lectures.length === 0) {
