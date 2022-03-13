@@ -19,7 +19,7 @@ const loginDataValidation = (req, res, next) => {
 
   for (let field of loginFields) {
     if (!body[field]) {
-      return res.status(400).json({ message: 'All fields are required.'});
+      return res.status(400).json({ message: `${field}is Required` });
     }
   }
 
@@ -37,7 +37,7 @@ const registerDataValidation = (req, res, next) => {
 
   for (let field of registerFields) {
     if (!body[field]) {
-      return res.status(400).json({ message: 'All fields are required' });
+      return res.status(400).json({ message: `${field}is Required` });
     }
   }
 
