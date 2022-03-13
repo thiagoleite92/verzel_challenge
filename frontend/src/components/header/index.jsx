@@ -1,10 +1,10 @@
 import React from 'react';
+import Header from './Header';
 
 export default function index() {
   return (
-    <>
-      <div>Header</div>
-      <div>header</div>
-    </>
+  <Header>
+    <h1>Master - Web Developer Plus</h1>
+  </Header>
   );
 }
