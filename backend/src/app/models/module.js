@@ -17,6 +17,7 @@ const listModules = async () => {
 };
 
 const listModuleById =  async (id) => {
+  console.log(id)
   const module = await prisma.module.findUnique({
     where: { id },
     include: {

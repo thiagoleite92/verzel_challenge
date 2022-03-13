@@ -11,7 +11,8 @@ const listLectures = async (id) => {
 };
 
 const newLecture = async ({lecture, startDate, moduleId}) => {
-  const newestLecture = await lectureModel.newLecture(lecture, startDate, moduleId);
+  const intModuleID = parseInt(moduleId, 10);
+  const newestLecture = await lectureModel.newLecture(lecture, startDate, intModuleID);
 
   if (newestLecture.message) {
     return { status: 409, message: newestLecture.message };
