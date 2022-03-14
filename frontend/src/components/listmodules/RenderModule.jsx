@@ -1,9 +1,10 @@
 import React from 'react';
+import { nanoid } from 'nanoid';
 
 function RenderModule({ modules }) {
   return (
     modules.map((module) => (
-      <section>
+      <section key={nanoid()}>
         <div>{module.module}</div>
         <div>
           Lectures avaible:

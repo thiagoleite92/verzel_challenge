@@ -21,6 +21,7 @@ const ListModules = styled.main`
     border: solid 1px black;
     box-shadow: 10px 5px 5px black;
     transition: transform 330ms ease-in-out;
+    font-weight: 700;
 
     &: hover{
       cursor: pointer;
