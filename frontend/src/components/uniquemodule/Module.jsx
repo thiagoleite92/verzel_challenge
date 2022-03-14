@@ -8,7 +8,7 @@ function Module({ moduleById }) {
         <div>
           <h3>
             Module
-            {' '}
+            <br />
             {moduleById.module}
           </h3>
         </div>
@@ -17,23 +17,26 @@ function Module({ moduleById }) {
         moduleById.Lecture.map((lec) => (
           <div className="lectures-container">
             <h2>
-              Lecture:
-              {' '}
+              Lecture
+              <br />
               {lec.lecture}
             </h2>
             <h3>
-              Date:
-              {' '}
+              Date
+              <br />
               {lec.startDate}
             </h3>
             <h4>
-              Module:
-              {' '}
+              Module
+              <br />
               {lec.moduleId}
             </h4>
+            <button type="button">teste</button>
+            <button type="button">teste</button>
           </div>
         ))
       }
+
     </>
   );
 }
