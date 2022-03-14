@@ -17,7 +17,7 @@ function LoginButton({ loginForm }) {
 }
 
 LoginButton.propTypes = {
-  loginForm: PropTypes.shapeOf({
+  loginForm: PropTypes.shape({
     email: PropTypes.string,
     password: PropTypes.string,
   }).isRequired,
