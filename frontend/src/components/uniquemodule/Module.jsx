@@ -11,6 +11,7 @@ function Module({ moduleById }) {
             <br />
             {moduleById.module}
           </h3>
+          <button type="button">voltar</button>
         </div>
       </section>
       {
@@ -36,7 +37,6 @@ function Module({ moduleById }) {
           </div>
         ))
       }
-
     </>
   );
 }
