@@ -12,7 +12,7 @@ const Header = styled.header`
     flex-direction: column;
     align-items: center;
     height: 125px;
-    width: 300px;
+    width: 350px;
     border: solid 1px black;
     box-shadow: 10px 5px 5px black;;
 
@@ -27,7 +27,7 @@ const Header = styled.header`
 
     input {
       margin-left: 10px;
-      width: 150px;
+      width: 200px;
     }
 
     div {
