@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { postLogin } from '../../api/api';
 
 function LoginButton({ loginForm }) {
@@ -14,5 +15,12 @@ function LoginButton({ loginForm }) {
     </button>
   );
 }
+
+LoginButton.propTypes = {
+  loginForm: PropTypes.shapeOf({
+    email: PropTypes.string,
+    password: PropTypes.string,
+  }).isRequired,
+};
 
 export default LoginButton;
