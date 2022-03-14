@@ -8,8 +8,7 @@ const userLogin = async (req, res) => {
 
     return response.message 
       ? res.status(response.status).json(response.message)
-      : res.status(response.status).json(response.lectures);
-      
+      : res.status(response.status).json(response.user);
   } catch (e) {
 
     return res.status(500).json({ message: 'Something went wrong' });
@@ -24,7 +23,7 @@ const userRegister = async (req, res) => {
 
     return response.message 
       ? res.status(response.status).json(response.message)
-      : res.status(response.status).json(response.lectures);
+      : res.status(response.status).json(response.register);
 
   } catch(e) {
     return res.status(500).json({message: 'Something went wrong'});

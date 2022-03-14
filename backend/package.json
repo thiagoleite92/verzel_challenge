@@ -11,7 +11,7 @@
     "express": "^4.17.3",
     "init": "^0.1.2",
     "jsonwebtoken": "^8.5.1",
-    "cors": "^2.8.5",
+    "cors": "^2.8.5"
   },
   "devDependencies": {
     "git-commit-msg-linter": "^4.1.1",
