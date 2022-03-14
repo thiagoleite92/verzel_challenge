@@ -11,6 +11,12 @@ const UniqueModule = styled.main`
   box-shadow: 10px 5px 5px black;
   padding: 20px;
 
+  a {
+    color: black;
+    text-decoration: none;
+    height: 100%;
+  }
+
   section {
     display: flex;
     flex-wrap: wrap;
