@@ -14,7 +14,7 @@ const listLectures = async (req, res) => {
     return response.message 
       ? res.status(response.status).json(response.message)
       : res.status(response.status).json(response.lectures);
-      
+
   } catch (e) {
     return res.status(serverError.status).json(serverError.message);
   }

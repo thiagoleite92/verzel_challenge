@@ -1,4 +1,5 @@
 const { PrismaClient } = require('@prisma/client');
+const { formatDate } = require('../../utils/utils');
 
 const prisma = new PrismaClient();
 
@@ -7,9 +8,7 @@ const listLectures = async (id) => {
     where: { id },
   });
 
-  // if (lectures.length === 0) {
-  //   return { message: 'Lectures not found.' };
-  // }
+  lectures.startDate = formatDate(lectures.startDate)
 
   return lectures;
 };

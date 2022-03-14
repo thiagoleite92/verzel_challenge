@@ -1,4 +1,5 @@
 const { PrismaClient } = require('@prisma/client');
+const { formatDate } = require('../../utils/utils')
 
 const prisma = new PrismaClient();
 
@@ -23,6 +24,13 @@ const listModuleById =  async (id) => {
       Lecture: true,
     }
   });
+
+  const dateCorrection = module.Lecture.map((lecture) => ({
+    ...lecture, startDate: formatDate(lecture.startDate)
+  }))
+
+  module.Lecture = dateCorrection;
+
   return module;
 };
 
