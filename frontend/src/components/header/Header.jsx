@@ -6,6 +6,8 @@ const Header = styled.header`
   align-items: center;
   height: 150px;
   background-color: #8B4000;
+  margin-bottom: 25px;
+  border-bottom: solid 3px black;
 
   form {
     display: flex;
@@ -14,7 +16,7 @@ const Header = styled.header`
     height: 125px;
     width: 350px;
     border: solid 1px black;
-    box-shadow: 10px 5px 5px black;;
+    box-shadow: 10px 5px 5px black;
 
     label {
       display: flex;
