@@ -35,8 +35,18 @@ const getModule = async (id) => {
   return data;
 };
 
+const getLecture = async (id) => {
+  const { data } = await axios.get(
+    `${baseURL}/lecture/${id}`,
+    { headers },
+  );
+
+  return data;
+};
+
 module.exports = {
   postLogin,
   getModules,
   getModule,
+  getLecture,
 };

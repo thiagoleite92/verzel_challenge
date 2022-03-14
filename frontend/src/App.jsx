@@ -1,12 +1,13 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Home, ModulePage } from './pages';
+import { Home, LecturePage, ModulePage } from './pages';
 
 function App() {
   return (
     <Routes>
       <Route path="/home" element={<Home />} />
       <Route path="/module/:moduleId" element={<ModulePage />} />
+      <Route path="/lecture/:lectureId" element={<LecturePage />} />
       <Route path="/" element={<Navigate to="/home" />} />
     </Routes>
   );
