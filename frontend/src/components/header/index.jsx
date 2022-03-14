@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import DisplayUserInfo from './DisplayUserInfo';
 import Header from './Header';
 import LoginForm from './LoginForm';
 
 export default function Index() {
-  const [userInfo, setUserInfo] = useState(null);
+  const [loggedUserInfo, setLoggedUserInfo] = useState(null);
 
   useEffect(() => {
     const fetchUserInfo = () => {
       const localUser = JSON.parse(localStorage.getItem('user'));
-      setUserInfo(localUser);
+      setLoggedUserInfo(localUser);
     };
     fetchUserInfo();
   }, []);
@@ -17,8 +18,8 @@ export default function Index() {
     <Header>
       <h1>Master - Web Developer Plus</h1>
       {
-        userInfo
-          ? 'Informações do usuário'
+        loggedUserInfo
+          ? <DisplayUserInfo loggedUserInfo={loggedUserInfo} />
           : <LoginForm />
       }
     </Header>

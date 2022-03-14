@@ -1,15 +1,23 @@
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { postLogin } from '../../api/api';
 import MainContext from '../../context/MainContext';
 
 function LoginButton({ loginForm }) {
   const { setUserInfo } = useContext(MainContext);
+  const navigate = useNavigate();
+
   const handleLogin = async (e) => {
     e.preventDefault();
-    const data = await postLogin(loginForm);
-    localStorage.setItem('user', JSON.stringify(data));
-    setUserInfo(loginForm);
+    try {
+      const data = await postLogin(loginForm);
+      localStorage.setItem('user', JSON.stringify(data));
+      setUserInfo(loginForm);
+      navigate('/');
+    } catch (error) {
+      window.alert('User not found');
+    }
   };
 
   return (
