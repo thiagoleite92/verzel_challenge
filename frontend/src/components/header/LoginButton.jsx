@@ -1,10 +1,11 @@
 import React from 'react';
-import axios from 'axios';
+import { postLogin } from '../../api/api';
 
 function LoginButton({ loginForm }) {
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log(loginForm);
+    const data = await postLogin(loginForm);
+    localStorage.setItem('user', JSON.stringify(data));
   };
 
   return (
