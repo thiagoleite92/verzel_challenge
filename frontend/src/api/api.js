@@ -26,7 +26,17 @@ const getModules = async () => {
   return data;
 };
 
+const getModule = async (id) => {
+  const { data } = await axios.get(
+    `${baseURL}/module/${id}`,
+    { headers },
+  );
+
+  return data;
+};
+
 module.exports = {
   postLogin,
   getModules,
+  getModule,
 };
