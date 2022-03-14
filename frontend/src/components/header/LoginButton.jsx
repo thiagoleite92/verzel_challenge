@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { postLogin } from '../../api/api';
+import MainContext from '../../context/MainContext';
 
 function LoginButton({ loginForm }) {
+  const { setUserInfo } = useContext(MainContext);
   const handleLogin = async (e) => {
     e.preventDefault();
     const data = await postLogin(loginForm);
     localStorage.setItem('user', JSON.stringify(data));
+    setUserInfo(loginForm);
   };
 
   return (

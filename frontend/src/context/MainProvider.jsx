@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MainContext from './MainContext';
 
 function MainProvider({ children }) {
-  const [userInfo, setUserInfo] = useState(null);
+  const [userInfo, setUserInfo] = useState();
 
   const context = useMemo(() => ({
     userInfo,
