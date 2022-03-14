@@ -1,10 +1,15 @@
-import React from 'react';
-import axios from 'axios';
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+import { postLogin } from '../../api/api';
+import MainContext from '../../context/MainContext';
 
 function LoginButton({ loginForm }) {
-  const handleLogin = (e) => {
+  const { setUserInfo } = useContext(MainContext);
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log(loginForm);
+    const data = await postLogin(loginForm);
+    localStorage.setItem('user', JSON.stringify(data));
+    setUserInfo(loginForm);
   };
 
   return (
@@ -13,5 +18,12 @@ function LoginButton({ loginForm }) {
     </button>
   );
 }
+
+LoginButton.propTypes = {
+  loginForm: PropTypes.shape({
+    email: PropTypes.string,
+    password: PropTypes.string,
+  }).isRequired,
+};
 
 export default LoginButton;

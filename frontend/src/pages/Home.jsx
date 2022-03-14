@@ -1,10 +1,10 @@
 import React from 'react';
 import { Header } from '../components';
 
-function Home() {
+function HomeLogin() {
   return (
     <Header />
   );
 }
 
-export default Home;
+export default HomeLogin;
