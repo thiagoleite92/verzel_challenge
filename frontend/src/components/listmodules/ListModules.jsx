@@ -32,7 +32,6 @@ const ListModules = styled.main`
       cursor: pointer;
       transform: scale(1.1);
     }
-
   }
 `;
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getModule } from '../../api/api';
+import Module from './Module';
 import UniqueModule from './UniqueModule';
 
 export default function Index() {
@@ -19,7 +20,9 @@ export default function Index() {
     <UniqueModule>
       {
         moduleById
-          ? 'modulo'
+          ? (
+            <Module moduleById={moduleById} />
+          )
           : 'carregando modulo'
       }
     </UniqueModule>
