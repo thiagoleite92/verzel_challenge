@@ -6,7 +6,7 @@ const Header = styled.header`
   align-items: center;
   height: 150px;
   background-color: #8B4000;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
   border-bottom: solid 3px black;
 
   form {

@@ -10,6 +10,11 @@ const ListModules = styled.main`
   background-color: #8B4000;
   border: solid 1px black;
   box-shadow: 10px 5px 5px black;
+  
+  a {
+    color: black;
+    text-decoration: none;
+  }
 
   section {
     display: flex;
@@ -18,15 +23,16 @@ const ListModules = styled.main`
     align-items: center;
     height: 200px;
     width: 300px;
+    padding: 20px;
     border: solid 1px black;
     box-shadow: 10px 5px 5px black;
-    transition: transform 330ms ease-in-out;
-    font-weight: 700;
+    transition: transform 275ms ease-in-out;
 
     &: hover{
       cursor: pointer;
       transform: scale(1.1);
     }
+
   }
 `;
 

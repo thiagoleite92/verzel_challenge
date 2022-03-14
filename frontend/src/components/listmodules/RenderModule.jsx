@@ -1,17 +1,20 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
+import { Link } from 'react-router-dom';
 
 function RenderModule({ modules }) {
   return (
     modules.map((module) => (
-      <section key={nanoid()}>
-        <div>{module.module}</div>
-        <div>
-          Lectures avaible:
-          {' '}
-          {module.lectures}
-        </div>
-      </section>
+      <Link key={nanoid()} to={`/module/${module.id}`}>
+        <section>
+          <h3>{module.module}</h3>
+          <h4>
+            Lectures avaible:
+            {' '}
+            {module.lectures}
+          </h4>
+        </section>
+      </Link>
     ))
   );
 }
