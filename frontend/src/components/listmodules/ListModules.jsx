@@ -10,6 +10,7 @@ const ListModules = styled.main`
   background-color: #8B4000;
   border: solid 1px black;
   box-shadow: 10px 5px 5px black;
+  overflow-wrap: break-word;
   
   a {
     color: black;
@@ -28,9 +29,14 @@ const ListModules = styled.main`
     box-shadow: 10px 5px 5px black;
     transition: transform 300ms ease-in-out;
 
-    &: hover{
+    &: hover {
       cursor: pointer;
       box-shadow: 10px 5px 5px blue;
+    }
+
+    div {
+      font-size: 16px;
+      font-weight: bold;
     }
   }
 `;

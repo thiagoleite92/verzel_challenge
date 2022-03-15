@@ -52,10 +52,20 @@ const deleteModule = async (id) => {
   );
 };
 
+const createModule = async ({ module }) => {
+  const { token } = JSON.parse(localStorage.user);
+  await axios.post(
+    `${baseURL}/module/new`,
+    { module },
+    { headers: { Authorization: token } },
+  );
+};
+
 module.exports = {
   postLogin,
   getModules,
   getModule,
   getLecture,
   deleteModule,
+  createModule,
 };

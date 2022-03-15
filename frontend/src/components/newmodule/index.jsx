@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CreateModuleButton } from '../buttons';
 import NewModuleForm from './NewModuleForm';
 
 export default function Index() {
@@ -25,8 +26,10 @@ export default function Index() {
           required
           onChange={(e) => handleLoginForm(e)}
           value={newModuleInfo.module}
+          placeholder="Module Name"
         />
       </label>
+      <CreateModuleButton newModuleInfo={newModuleInfo} />
     </NewModuleForm>
   );
 }
