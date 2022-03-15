@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const NewModuleForm = styled.form`
+const NewLectureForm = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,4 +28,4 @@ const NewModuleForm = styled.form`
     }
 `;
 
-export default NewModuleForm;
+export default NewLectureForm;

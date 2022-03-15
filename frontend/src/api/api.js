@@ -70,6 +70,15 @@ const editModule = async ({ module }, id) => {
   );
 };
 
+const createLecture = async ({ lecture, startDate, moduleId }) => {
+  const { token } = JSON.parse(localStorage.user);
+  await axios.post(
+    `${baseURL}/lecture/new/`,
+    { lecture, startDate, moduleId },
+    { headers: { Authorization: token } },
+  );
+};
+
 module.exports = {
   postLogin,
   getModules,
@@ -78,4 +87,5 @@ module.exports = {
   deleteModule,
   createModule,
   editModule,
+  createLecture,
 };

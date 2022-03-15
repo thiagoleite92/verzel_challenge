@@ -3,3 +3,4 @@ export { default as BackToHome } from './BackToHome';
 export { default as DeleteModuleButton } from './DeleteModuleButton';
 export { default as CreateModuleButton } from './CreateModuleButton';
 export { default as EditModuleButton } from './EditModuleButton';
+export { default as CreateNewLectureButton } from './CreateNewLectureButton';

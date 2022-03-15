@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import MainContext from '../../context/MainContext';
 import EditModule from '../editmodule';
@@ -10,6 +10,7 @@ function Module({ moduleById }) {
   const { userInfo } = useContext(MainContext);
   const [editModuleId, setEditModuleId] = useState(null);
   const { moduleId } = useParams();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -34,6 +35,9 @@ function Module({ moduleById }) {
               <>
                 <button type="button" onClick={() => setEditModuleId(moduleId)}>Edit</button>
                 <DeleteModuleButton />
+                <button type="button" moduleId={moduleId} onClick={() => navigate('/new/lecture')}>
+                  ADD NEW LECTURE
+                </button>
               </>
             )
             : null
@@ -41,27 +45,30 @@ function Module({ moduleById }) {
         </div>
       </section>
       {
-        moduleById.Lecture.map((lec) => (
-          <Link key={nanoid()} to={`/lecture/${lec.id}`}>
-            <div className="lectures-container">
-              <h2>
-                Lecture
-                <br />
-                {lec.lecture}
-              </h2>
-              <h3>
-                Date
-                <br />
-                {lec.startDate}
-              </h3>
-              <h4>
-                Module
-                <br />
-                {lec.moduleId}
-              </h4>
-            </div>
-          </Link>
-        ))
+        moduleById.Lecture.length === 0
+          ? 'Lectures not found. Please, contact the administration.'
+          : (
+            moduleById.Lecture.map((lec) => (
+              <Link key={nanoid()} to={`/lecture/${lec.id}`}>
+                <div className="lectures-container">
+                  <h2>
+                    Lecture
+                    <br />
+                    {lec.lecture}
+                  </h2>
+                  <h3>
+                    Date
+                    <br />
+                    {lec.startDate}
+                  </h3>
+                  <h4>
+                    Module
+                    <br />
+                    {lec.moduleId}
+                  </h4>
+                </div>
+              </Link>
+            )))
       }
     </>
   );

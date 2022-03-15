@@ -1,31 +1,33 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { createModule } from '../../api/api';
+import { createLecture } from '../../api/api';
 
 function CreateModuleButton({ newModuleInfo }) {
   const navigate = useNavigate();
 
-  const handleCreateModule = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await createModule(newModuleInfo);
+      await createLecture(newModuleInfo);
       navigate('/');
     } catch (error) {
-      window.alert('Duplicated Module, Try another name.');
+      window.alert('Duplicated Lecture. Try another name.');
     }
   };
 
   return (
-    <button type="submit" onClick={(e) => handleCreateModule(e)}>
-      Create Module
+    <button type="submit" onClick={(e) => handleLogin(e)}>
+      ADD LECTURE
     </button>
   );
 }
 
 CreateModuleButton.propTypes = {
   newModuleInfo: PropTypes.shape({
-    module: PropTypes.string,
+    lecture: PropTypes.string,
+    startDate: PropTypes.string,
+    moduleId: PropTypes.string,
   }),
 }.isRequired;
 
