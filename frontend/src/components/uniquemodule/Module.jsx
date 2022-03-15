@@ -1,12 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import MainContext from '../../context/MainContext';
+import EditModule from '../editmodule';
 import { BackToHome, DeleteModuleButton } from '../buttons';
 
 function Module({ moduleById }) {
   const { userInfo } = useContext(MainContext);
+  const [editModuleId, setEditModuleId] = useState(null);
+  const { moduleId } = useParams();
 
   return (
     <>
@@ -15,17 +18,21 @@ function Module({ moduleById }) {
           <h3>
             Module
             <br />
-            {moduleById.module}
+            {
+              editModuleId
+                ? <EditModule setEditModuleId={setEditModuleId} />
+                : moduleById.module
+            }
           </h3>
           <br />
           <BackToHome />
         </div>
         <div className="buttons-container">
           {
-          userInfo.role === 'admin'
+          !!userInfo && userInfo.role === 'admin'
             ? (
               <>
-                <button type="button">Edit</button>
+                <button type="button" onClick={() => setEditModuleId(moduleId)}>Edit</button>
                 <DeleteModuleButton />
               </>
             )
