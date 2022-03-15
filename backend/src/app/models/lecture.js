@@ -8,7 +8,9 @@ const listLectures = async (id) => {
     where: { id },
   });
 
-  lectures.startDate = formatDate(lectures.startDate)
+  if (lectures) {
+    lectures.startDate = formatDate(lectures.startDate)
+  }
 
   return lectures;
 };

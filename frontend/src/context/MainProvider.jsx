@@ -4,6 +4,7 @@ import MainContext from './MainContext';
 
 function MainProvider({ children }) {
   const [userInfo, setUserInfo] = useState();
+  const [moduleToCreateNewLecture, setModuleToCreateNewLecture] = useState(0);
 
   useEffect(() => {
     const fetchUserInfo = () => {
@@ -16,8 +17,10 @@ function MainProvider({ children }) {
   const context = useMemo(() => ({
     userInfo,
     setUserInfo,
+    moduleToCreateNewLecture,
+    setModuleToCreateNewLecture,
   }
-  ), [userInfo]);
+  ), [userInfo, moduleToCreateNewLecture]);
 
   return (
     <MainContext.Provider value={context}>

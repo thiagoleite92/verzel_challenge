@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import MainContext from '../../context/MainContext';
 import { BackToHome, CreateNewLectureButton } from '../buttons';
 import NewLectureForm from './NewLecture';
 
 export default function Index() {
+  const { moduleToCreateNewLecture } = useContext(MainContext);
   const [newLectureInfo, setNewLectureInfo] = useState({
     lecture: '',
     startDate: '',
-    moduleId: '',
+    moduleId: moduleToCreateNewLecture,
   });
 
   const handleNewLectureForm = ({ target }) => {
@@ -47,6 +49,7 @@ export default function Index() {
         Module ID:
         {' '}
         <input
+          disabled
           type="text"
           name="moduleId"
           required

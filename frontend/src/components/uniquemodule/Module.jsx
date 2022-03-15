@@ -7,10 +7,15 @@ import EditModule from '../editmodule';
 import { BackToHome, DeleteModuleButton } from '../buttons';
 
 function Module({ moduleById }) {
-  const { userInfo } = useContext(MainContext);
+  const { userInfo, setModuleToCreateNewLecture } = useContext(MainContext);
   const [editModuleId, setEditModuleId] = useState(null);
   const { moduleId } = useParams();
   const navigate = useNavigate();
+
+  const handleNewLectureNavigate = () => {
+    setModuleToCreateNewLecture(moduleId);
+    navigate('/new/lecture');
+  };
 
   return (
     <>
@@ -35,7 +40,11 @@ function Module({ moduleById }) {
               <>
                 <button type="button" onClick={() => setEditModuleId(moduleId)}>Edit</button>
                 <DeleteModuleButton />
-                <button type="button" moduleId={moduleId} onClick={() => navigate('/new/lecture')}>
+                <button
+                  type="button"
+                  moduleId={moduleId}
+                  onClick={handleNewLectureNavigate}
+                >
                   ADD NEW LECTURE
                 </button>
               </>

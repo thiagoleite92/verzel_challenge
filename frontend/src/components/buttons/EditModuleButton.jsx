@@ -7,7 +7,7 @@ function EditModuleButton({ editModuleInfo }) {
   const navigate = useNavigate();
   const { moduleId } = useParams();
 
-  const handleLogin = async (e) => {
+  const handleEditModule = async (e) => {
     e.preventDefault();
     try {
       await editModule(editModuleInfo, moduleId);
@@ -18,7 +18,7 @@ function EditModuleButton({ editModuleInfo }) {
   };
 
   return (
-    <button type="submit" onClick={(e) => handleLogin(e)}>
+    <button type="submit" onClick={(e) => handleEditModule(e)}>
       EDIT MODULE NAME
     </button>
   );
