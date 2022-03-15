@@ -12,6 +12,10 @@ function DisplayUserInfo() {
     navigate('/');
   };
 
+  const goToNewModule = () => {
+    navigate('/new/module');
+  };
+
   return (
     <>
       <div>
@@ -21,7 +25,12 @@ function DisplayUserInfo() {
       </div>
       {
         userInfo.role === 'admin'
-          ? <span>Administrator</span>
+          ? (
+            <>
+              <span>Administrator</span>
+              <button type="button" onClick={goToNewModule}>Add new module</button>
+            </>
+          )
           : null
       }
       <button type="button" onClick={handleLogOut}>
