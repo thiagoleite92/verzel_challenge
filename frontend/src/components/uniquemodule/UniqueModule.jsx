@@ -17,6 +17,16 @@ const UniqueModule = styled.main`
     height: 100%;
   }
 
+  .buttons-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    button {
+      width: 100px;
+    }
+  }
+
   section {
     display: flex;
     flex-wrap: wrap;

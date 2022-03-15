@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-import { BackToHome } from '../buttons';
+import MainContext from '../../context/MainContext';
+import { BackToHome, DeleteModuleButton } from '../buttons';
 
 function Module({ moduleById }) {
+  const { userInfo } = useContext(MainContext);
+
   return (
     <>
       <section>
@@ -16,6 +19,18 @@ function Module({ moduleById }) {
           </h3>
           <br />
           <BackToHome />
+        </div>
+        <div className="buttons-container">
+          {
+          userInfo.role === 'admin'
+            ? (
+              <>
+                <button type="button">Edit</button>
+                <DeleteModuleButton />
+              </>
+            )
+            : null
+          }
         </div>
       </section>
       {
@@ -37,8 +52,6 @@ function Module({ moduleById }) {
                 <br />
                 {lec.moduleId}
               </h4>
-              <button type="button">teste</button>
-              <button type="button">teste</button>
             </div>
           </Link>
         ))

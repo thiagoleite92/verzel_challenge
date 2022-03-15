@@ -44,9 +44,18 @@ const getLecture = async (id) => {
   return data;
 };
 
+const deleteModule = async (id) => {
+  const { token } = JSON.parse(localStorage.user);
+  await axios.delete(
+    `${baseURL}/module/delete/${id}`,
+    { headers: { Authorization: token } },
+  );
+};
+
 module.exports = {
   postLogin,
   getModules,
   getModule,
   getLecture,
+  deleteModule,
 };

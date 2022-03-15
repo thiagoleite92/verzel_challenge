@@ -2,7 +2,9 @@ import React from 'react';
 
 function EditButton() {
   return (
-    <div>EditButton</div>
+    <button type="button">
+      Editar
+    </button>
   );
 }
 

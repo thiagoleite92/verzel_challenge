@@ -13,7 +13,7 @@ function LoginButton({ loginForm }) {
     try {
       const data = await postLogin(loginForm);
       localStorage.setItem('user', JSON.stringify(data));
-      setUserInfo(loginForm);
+      setUserInfo(data);
       navigate('/');
     } catch (error) {
       window.alert('User not found');
