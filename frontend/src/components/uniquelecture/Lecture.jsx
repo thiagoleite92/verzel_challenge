@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Lecture({ lectureById }) {
   return (
@@ -28,5 +28,13 @@ function Lecture({ lectureById }) {
     </section>
   );
 }
+
+Lecture.propTypes = {
+  lectureById: PropTypes.shape({
+    startDate: PropTypes.string,
+    moduleId: PropTypes.string,
+    lecture: PropTypes.string,
+  }),
+}.isRequired;
 
 export default Lecture;
