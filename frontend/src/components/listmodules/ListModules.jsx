@@ -26,11 +26,11 @@ const ListModules = styled.main`
     padding: 20px;
     border: solid 1px black;
     box-shadow: 10px 5px 5px black;
-    transition: transform 275ms ease-in-out;
+    transition: transform 300ms ease-in-out;
 
     &: hover{
       cursor: pointer;
-      transform: scale(1.1);
+      box-shadow: 10px 5px 5px blue;
     }
   }
 `;

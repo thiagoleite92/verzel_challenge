@@ -1,23 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import MainContext from '../../context/MainContext';
 
-function DisplayUserInfo({ loggedUserInfo: { name, role } }) {
+function DisplayUserInfo() {
   const navigate = useNavigate();
+  const { setUserInfo, userInfo } = useContext(MainContext);
+
   const handleLogOut = () => {
     localStorage.clear();
+    setUserInfo(null);
     navigate('/');
+  };
+
+  const goToNewModule = () => {
+    navigate('/new/module');
   };
 
   return (
     <>
       <div>
         Name:
-        { name }
+        {' '}
+        { userInfo.name }
       </div>
       {
-        role === 'admin'
-          ? <span>Admin</span>
+        userInfo.role === 'admin'
+          ? (
+            <>
+              <span>Administrator</span>
+              <button type="button" onClick={goToNewModule}>Add new module</button>
+            </>
+          )
           : null
       }
       <button type="button" onClick={handleLogOut}>
@@ -26,10 +39,5 @@ function DisplayUserInfo({ loggedUserInfo: { name, role } }) {
     </>
   );
 }
-
-DisplayUserInfo.propTypes = {
-  name: PropTypes.string,
-  role: PropTypes.string,
-}.isRequired;
 
 export default DisplayUserInfo;

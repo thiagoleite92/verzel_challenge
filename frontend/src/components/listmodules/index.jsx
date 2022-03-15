@@ -4,7 +4,7 @@ import ListModules from './ListModules';
 import RenderModule from './RenderModule';
 
 export default function Index() {
-  const [modules, setModules] = useState(null);
+  const [modules, setModules] = useState([]);
 
   useEffect(() => {
     const fetchModules = async () => {

@@ -25,11 +25,13 @@ const listModuleById =  async (id) => {
     }
   });
 
-  const dateCorrection = module.Lecture.map((lecture) => ({
-    ...lecture, startDate: formatDate(lecture.startDate)
-  }))
-
-  module.Lecture = dateCorrection;
+  if (module) {
+    const dateCorrection = module.Lecture.map((lecture) => ({
+      ...lecture, startDate: formatDate(lecture.startDate)
+    }))
+  
+    module.Lecture = dateCorrection;
+  }
 
   return module;
 };
