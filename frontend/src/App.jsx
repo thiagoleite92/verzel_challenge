@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import {
-  Home, LecturePage, ModulePage, NewModulePage,
+  Home, LecturePage, ModulePage, NewLecturePage, NewModulePage,
 } from './pages';
 
 function App() {
@@ -9,6 +9,7 @@ function App() {
     <Routes>
       <Route path="/home" element={<Home />} />
       <Route path="/new/module" element={<NewModulePage />} />
+      <Route path="/new/lecture" element={<NewLecturePage />} />
       <Route path="/module/:moduleId" element={<ModulePage />} />
       <Route path="/lecture/:lectureId" element={<LecturePage />} />
       <Route path="/" element={<Navigate to="/home" />} />

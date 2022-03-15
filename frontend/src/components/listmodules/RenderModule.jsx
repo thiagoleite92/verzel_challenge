@@ -11,9 +11,9 @@ function RenderModule({ modules }) {
   return modules.map((module) => (
     <Link key={nanoid()} to={`/module/${module.id}`}>
       <section>
-        <h3>{module.module}</h3>
+        <div>{module.module}</div>
         <h4>
-          Lectures avaible:
+          Lectures available:
           {' '}
           {module.lectures}
         </h4>

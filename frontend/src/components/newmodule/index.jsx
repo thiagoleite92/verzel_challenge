@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BackToHome, CreateModuleButton } from '../buttons';
 import NewModuleForm from './NewModuleForm';
 
 export default function Index() {
@@ -6,7 +7,7 @@ export default function Index() {
     module: '',
   });
 
-  const handleLoginForm = ({ target }) => {
+  const handleModuleInfo = ({ target }) => {
     const { name, value } = target;
     setNewModuleInfo((oldState) => ({
       ...oldState,
@@ -23,10 +24,13 @@ export default function Index() {
           type="module"
           name="module"
           required
-          onChange={(e) => handleLoginForm(e)}
+          onChange={(e) => handleModuleInfo(e)}
           value={newModuleInfo.module}
+          placeholder="Module Name"
         />
       </label>
+      <CreateModuleButton newModuleInfo={newModuleInfo} />
+      <BackToHome />
     </NewModuleForm>
   );
 }

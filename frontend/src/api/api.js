@@ -52,10 +52,59 @@ const deleteModule = async (id) => {
   );
 };
 
+const createModule = async ({ module }) => {
+  const { token } = JSON.parse(localStorage.user);
+  await axios.post(
+    `${baseURL}/module/new`,
+    { module },
+    { headers: { Authorization: token } },
+  );
+};
+
+const editModule = async ({ module }, id) => {
+  const { token } = JSON.parse(localStorage.user);
+  await axios.put(
+    `${baseURL}/module/edit/${id}`,
+    { module },
+    { headers: { Authorization: token } },
+  );
+};
+
+const createLecture = async ({ lecture, startDate, moduleId }) => {
+  const { token } = JSON.parse(localStorage.user);
+  await axios.post(
+    `${baseURL}/lecture/new/`,
+    { lecture, startDate, moduleId },
+    { headers: { Authorization: token } },
+  );
+};
+
+const editLecture = async ({ lecture, startDate, moduleId }, lectureId) => {
+  const { token } = JSON.parse(localStorage.user);
+  await axios.put(
+    `${baseURL}/lecture/edit/${lectureId}`,
+    { lecture, startDate, moduleId },
+    { headers: { Authorization: token } },
+  );
+};
+
+const deleteLecture = async (id) => {
+  const { token } = JSON.parse(localStorage.user);
+  await axios.delete(
+    `${baseURL}/lecture/delete/${id}`,
+    { headers: { Authorization: token } },
+  );
+};
+
 module.exports = {
   postLogin,
   getModules,
   getModule,
   getLecture,
   deleteModule,
+  createModule,
+  editModule,
+  createLecture,
+  editLecture,
+  deleteLecture,
 };
