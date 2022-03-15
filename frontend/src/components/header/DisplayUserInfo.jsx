@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import MainContext from '../../context/MainContext';
 
-function DisplayUserInfo({ loggedUserInfo: { name, role } }) {
+function DisplayUserInfo() {
   const navigate = useNavigate();
+  const { setUserInfo, userInfo } = useContext(MainContext);
+
   const handleLogOut = () => {
     localStorage.clear();
+    setUserInfo(null);
     navigate('/');
   };
 
@@ -14,10 +17,10 @@ function DisplayUserInfo({ loggedUserInfo: { name, role } }) {
       <div>
         Name:
         {' '}
-        { name }
+        { userInfo.name }
       </div>
       {
-        role === 'admin'
+        userInfo.role === 'admin'
           ? <span>Administrator</span>
           : null
       }
@@ -27,10 +30,5 @@ function DisplayUserInfo({ loggedUserInfo: { name, role } }) {
     </>
   );
 }
-
-DisplayUserInfo.propTypes = {
-  name: PropTypes.string,
-  role: PropTypes.string,
-}.isRequired;
 
 export default DisplayUserInfo;

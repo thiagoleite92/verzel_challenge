@@ -1,9 +1,17 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import MainContext from './MainContext';
 
 function MainProvider({ children }) {
-  const [userInfo, setUserInfo] = useState();
+  const [userInfo, setUserInfo] = useState(null);
+
+  useEffect(() => {
+    const fetchUserInfo = () => {
+      const localUser = JSON.parse(localStorage.getItem('user'));
+      setUserInfo(localUser);
+    };
+    fetchUserInfo();
+  }, []);
 
   const context = useMemo(() => ({
     userInfo,
