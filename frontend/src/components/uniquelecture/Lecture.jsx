@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import MainContext from '../../context/MainContext';
-import { BackToHome, EditLectureButton } from '../buttons';
+import { BackToHome, DeleteLectureButton, EditLectureButton } from '../buttons';
 import EditLectureForm from '../editlecture';
 
 function Lecture({ lectureById }) {
@@ -79,7 +79,7 @@ function Lecture({ lectureById }) {
             ? (
               <>
                 <button type="button" onClick={() => setEditLectureId(lectureId)}>Edit</button>
-                <button type="button">DELETE</button>
+                <DeleteLectureButton lectureId={lectureId} moduleId={editLectureInfo.moduleId} />
               </>
             )
             : null

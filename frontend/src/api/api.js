@@ -88,6 +88,14 @@ const editLecture = async ({ lecture, startDate, moduleId }, lectureId) => {
   );
 };
 
+const deleteLecture = async (id) => {
+  const { token } = JSON.parse(localStorage.user);
+  await axios.delete(
+    `${baseURL}/lecture/delete/${id}`,
+    { headers: { Authorization: token } },
+  );
+};
+
 module.exports = {
   postLogin,
   getModules,
@@ -98,4 +106,5 @@ module.exports = {
   editModule,
   createLecture,
   editLecture,
+  deleteLecture,
 };

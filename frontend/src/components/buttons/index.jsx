@@ -5,3 +5,4 @@ export { default as CreateModuleButton } from './CreateModuleButton';
 export { default as EditModuleButton } from './EditModuleButton';
 export { default as CreateNewLectureButton } from './CreateNewLectureButton';
 export { default as EditLectureButton } from './EditLectureButton';
+export { default as DeleteLectureButton } from './DeleteLectureButton';
