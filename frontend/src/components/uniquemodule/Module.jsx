@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { nanoid } from 'nanoid';
+import { BackToHome } from '../buttons';
 
 function Module({ moduleById }) {
   return (
@@ -13,7 +14,8 @@ function Module({ moduleById }) {
             <br />
             {moduleById.module}
           </h3>
-          <button type="button">voltar</button>
+          <br />
+          <BackToHome />
         </div>
       </section>
       {

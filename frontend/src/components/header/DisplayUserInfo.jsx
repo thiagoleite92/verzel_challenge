@@ -13,11 +13,12 @@ function DisplayUserInfo({ loggedUserInfo: { name, role } }) {
     <>
       <div>
         Name:
+        {' '}
         { name }
       </div>
       {
         role === 'admin'
-          ? <span>Admin</span>
+          ? <span>Administrator</span>
           : null
       }
       <button type="button" onClick={handleLogOut}>
