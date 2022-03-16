@@ -24,6 +24,6 @@
   - Se isso não ocorrer, abra uma janela em seu navegador e digite o link http://localhost:3000/
 
 ### DISCLAIMER
-  - Todas as senhas expostas são apenas de cunho de aprendizado
+  - Todas as senhas expostas são apenas de cunho de aprendizado, e não comprementem a segurança de quem fez o projeto :)
 
 ### OBRIGADO
