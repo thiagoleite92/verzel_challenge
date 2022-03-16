@@ -2,7 +2,7 @@ const lectureModel = require('../models/lecture');
 const moduleModel = require('../models/module');
 
 const validateLecture = (lecture) => {
-  const LECTURE_LENGTH = 12;
+  const LECTURE_LENGTH = 3;
 
   return lecture.length >= LECTURE_LENGTH;
 };
@@ -25,13 +25,13 @@ const lectureValidation = (req, res, next) => {
   }
 
   if (!validateLecture(body.lecture)) {
-    return res.status(400).json({ 
+    return res.status(400).json({
       message: 'Lecture name must have at least 12 characters'
     });
   }
 
   if (!validateDateFormat(body.startDate)) {
-    return res.status(400).json({ 
+    return res.status(400).json({
       message: 'Start date must have format YYYY-MM-DD'
     });
   }
@@ -42,7 +42,7 @@ const lectureValidation = (req, res, next) => {
 const verifyModuleByIdOnLecture = async (req, res, next) => {
   const { moduleId } = req.body;
   const intID = parseInt(moduleId, 10);
-  
+
   const module = await moduleModel.listModuleById(intID);
 
   return module
@@ -53,7 +53,7 @@ const verifyModuleByIdOnLecture = async (req, res, next) => {
 const verifyLectureById = async (req, res, next) => {
   const { id } = req.params;
   const intID = parseInt(id, 10);
-  
+
   const module = await lectureModel.listLectures(intID);
 
   return module

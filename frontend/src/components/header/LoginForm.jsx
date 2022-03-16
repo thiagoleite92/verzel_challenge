@@ -42,7 +42,7 @@ function LoginForm() {
       </label>
       <div>
         <LoginButton loginForm={loginForm} />
-        <button type="button">
+        <button type="button" disabled>
           Register
         </button>
       </div>
