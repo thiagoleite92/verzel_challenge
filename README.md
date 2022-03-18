@@ -21,6 +21,7 @@
 
 ### SETUP NO FRONTEND
   - Navague via terminal da pasta raiz do projeto até a pasta frontend
+  - Digite npm i para instalar as dependências do projeto
   - Digite npm start para iniciar o projeto
   - Por padrão o projeto rodará na porta 3000
   - Uma nova janela em seu navegador irá se abrir após executar o comando seguindo o link: http://localhost:3000/
