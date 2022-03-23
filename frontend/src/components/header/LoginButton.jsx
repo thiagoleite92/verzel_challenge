@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { postLogin } from '../../api/api';
 import MainContext from '../../context/MainContext';
 
-function LoginButton({ loginForm }) {
+function LoginButton({ loginForm, statusLoginButton }) {
   const { setUserInfo } = useContext(MainContext);
   const navigate = useNavigate();
 
@@ -21,7 +21,11 @@ function LoginButton({ loginForm }) {
   };
 
   return (
-    <button type="submit" onClick={(e) => handleLogin(e)}>
+    <button
+      type="submit"
+      onClick={(e) => handleLogin(e)}
+      disabled={statusLoginButton}
+    >
       Login
     </button>
   );
@@ -31,7 +35,8 @@ LoginButton.propTypes = {
   loginForm: PropTypes.shape({
     email: PropTypes.string,
     password: PropTypes.string,
-  }).isRequired,
-};
+  }),
+  statusLoginButton: PropTypes.bool,
+}.isRequired;
 
 export default LoginButton;

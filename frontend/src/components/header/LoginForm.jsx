@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import LoginButton from './LoginButton';
+import { validEmail, validPassword } from '../../utils/validations';
+import InfoWarning from './InfoWarning';
 
 function LoginForm() {
   const [loginForm, setLoginForm] = useState({
     email: '',
     password: '',
   });
+
+  const [statusLoginButton, setStatusLoginButton] = useState(true);
+
+  const { email, password } = loginForm;
 
   const handleLoginForm = ({ target }) => {
     const { name, value } = target;
@@ -16,7 +22,12 @@ function LoginForm() {
     }));
   };
 
-  const { email, password } = loginForm;
+  useEffect(() => {
+    const validInformation = () => ((validEmail(email) && validPassword(password))
+      ? setStatusLoginButton(false)
+      : setStatusLoginButton(true));
+    validInformation();
+  }, [email, password]);
 
   return (
     <form action="submit">
@@ -29,6 +40,11 @@ function LoginForm() {
           onChange={(e) => handleLoginForm(e)}
           value={email}
         />
+        {
+          validEmail(email)
+            ? null
+            : <InfoWarning text="Insert email" />
+        }
       </label>
       <label htmlFor="password">
         Password
@@ -39,9 +55,14 @@ function LoginForm() {
           onChange={(e) => handleLoginForm(e)}
           value={password}
         />
+        {
+          validPassword(password)
+            ? null
+            : <InfoWarning text="Insert password" />
+        }
       </label>
       <div>
-        <LoginButton loginForm={loginForm} />
+        <LoginButton loginForm={loginForm} statusLoginButton={statusLoginButton} />
         <button type="button">
           Register
         </button>
