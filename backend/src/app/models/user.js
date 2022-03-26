@@ -33,11 +33,11 @@ const userLogin = async (email, password) => {
   return { name, role, token };
 };
 
-const userRegister = async (name, email, password) => {
+const userRegister = async (name, email, password, role) => {
   try {
-    const { role } = await prisma.user.create({
+    await prisma.user.create({
       data: {
-        email, password, name
+        email, password, name, role
       }
     });
 

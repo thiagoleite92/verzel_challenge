@@ -6,7 +6,7 @@ const userLogin = async (req, res) => {
 
     const response = await userService.userLogin(email, password);
 
-    return response.message 
+    return response.message
       ? res.status(response.status).json(response.message)
       : res.status(response.status).json(response.user);
   } catch (e) {
@@ -17,11 +17,15 @@ const userLogin = async (req, res) => {
 
 const userRegister = async (req, res) => {
   try {
-    const { body } = req;
+    const { name, password, email, role = 'user' } = req.body;
 
-    const response = await userService.userRegister(body);
+    const registerData = {
+      name, password, email, role
+    }
 
-    return response.message 
+    const response = await userService.userRegister(registerData);
+
+    return response.message
       ? res.status(response.status).json(response.message)
       : res.status(response.status).json(response.register);
 

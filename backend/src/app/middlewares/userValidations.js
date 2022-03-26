@@ -11,7 +11,7 @@ const validatePassword = (password) => {
 };
 
 const loginDataValidation = (req, res, next) => {
-  const loginFields = ['email', 'password'];
+  const loginFields = ["email", "password"];
 
   const { body } = req;
 
@@ -22,14 +22,14 @@ const loginDataValidation = (req, res, next) => {
   }
 
   if (!validateEmail(body.email)) {
-    return res.status(400).json({ message: 'Invalid email address'});
+    return res.status(400).json({ message: "Invalid email address" });
   }
 
   next();
 };
 
 const registerDataValidation = (req, res, next) => {
-  const registerFields = ['name', 'email', 'password'];
+  const registerFields = ["name", "email", "password"];
 
   const { body } = req;
 
@@ -40,17 +40,30 @@ const registerDataValidation = (req, res, next) => {
   }
 
   if (!validateEmail(body.email)) {
-    return res.status(400).json({ message: 'Invalid email address'});
+    return res.status(400).json({ message: "Invalid email address" });
   }
 
   if (!validatePassword(body.password)) {
-    return res.status(400).json({ message: 'Password must be at least 6 characters' });
+    return res
+      .status(400)
+      .json({ message: "Password must be at least 6 characters" });
   }
 
   next();
 };
 
+const roleValidation = (req, res, next) => {
+  const { role } = req.body;
+
+  if (!role) {
+    return res.status(400).json({ message: "Role must be provided" });
+  }
+
+  next()
+};
+
 module.exports = {
   loginDataValidation,
   registerDataValidation,
+  roleValidation,
 };
