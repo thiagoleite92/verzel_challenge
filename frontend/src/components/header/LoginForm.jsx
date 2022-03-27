@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import LoginButton from './LoginButton';
 import { validEmail, validPassword } from '../../utils/validations';
 import InfoWarning from './InfoWarning';
 
 function LoginForm() {
+  const navigate = useNavigate();
   const [loginForm, setLoginForm] = useState({
     email: '',
     password: '',
@@ -63,7 +65,10 @@ function LoginForm() {
       </label>
       <div>
         <LoginButton loginForm={loginForm} statusLoginButton={statusLoginButton} />
-        <button type="button">
+        <button
+          type="button"
+          onClick={() => navigate('/register')}
+        >
           Register
         </button>
       </div>
